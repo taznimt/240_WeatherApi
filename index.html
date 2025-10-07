@@ -73,3 +73,41 @@
         }
     </style>
 </head>
+<body>
+    <div class="container">
+        <h2>Aplikasi Cuaca</h2>
+
+        <div class="input-section">
+            <select id="lokasi-select">
+                <option value="Yogyakarta">Yogyakarta</option>
+                <option value="Jakarta">Jakarta</option>
+            </select>
+            <button id="btn-get" onclick="getCuaca()">Get</button>
+        </div>
+
+        <div id="result">
+            <div class="section">
+                <h3>Cuaca</h3>
+                <div class="info-row">
+                    <span class="label">Suhu:</span>
+                    <span class="value" id="suhu"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Kelembapan:</span>
+                    <span class="value" id="kelembapan"></span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3>Lokasi</h3>
+                <div class="info-row">
+                    <span class="label">Negara:</span>
+                    <span class="value" id="negara"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Provinsi:</span>
+                    <span class="value" id="provinsi"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Kecamatan:</span>
+                    <span class="value" id="kecamatan"></span>
