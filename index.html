@@ -111,3 +111,53 @@
                 <div class="info-row">
                     <span class="label">Kecamatan:</span>
                     <span class="value" id="kecamatan"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Longitude:</span>
+                    <span class="value" id="longitude"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Latitude:</span>
+                    <span class="value" id="latitude"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function getCuaca() {
+            const lokasi = document.getElementById("lokasi-select").value;
+            const urlapi = https://api.weatherapi.com/v1/current.json?key=8711f592bdc54ba7bb831031250710&q=${lokasi}&aqi=no;
+
+            $.ajax({
+                url: urlapi,
+                method: "GET",
+                success: function(data){
+                    console.log(data);
+                    document.getElementById("result").style.display = "block";
+
+                    // Cuaca
+                    document.getElementById("suhu").innerHTML = data.current.temp_c + "°C";
+                    document.getElementById("kelembapan").innerHTML = data.current.humidity + "%";
+
+                    // Lokasi
+                    document.getElementById("negara").innerHTML = data.location.country;
+                    document.getElementById("provinsi").innerHTML = data.location.region;
+                    document.getElementById("kecamatan").innerHTML = data.location.name;
+                    document.getElementById("longitude").innerHTML = data.location.lon;
+                    document.getElementById("latitude").innerHTML = data.location.lat;
+                },
+                error: function(error){
+                    console.log(error);
+                    alert("Gagal mengambil data cuaca. Coba lagi nanti.");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
